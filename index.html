@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CBT Safe Exam</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="screenLogin" class="center">
+  <form id="loginForm" class="card" autocomplete="off">
+    <h1 id="examTitle"></h1>
+    <p id="examSchool" class="muted"></p>
+    <label>Nama lengkap<input id="inName" required></label>
+    <label>NIS / NIM<input id="inId" required></label>
+    <label>Token ujian<input id="inToken" required></label>
+    <ul class="rules">
+      <li>Ujian berjalan layar penuh. Keluar layar penuh dihitung pelanggaran.</li>
+      <li>Berpindah tab/jendela, menyalin, dan membuka alat pengembang dicatat.</li>
+      <li>Setelah <b id="maxV"></b> pelanggaran, layar terkunci sampai pengawas membukanya.</li>
+      <li>Waktu ujian <b id="dur"></b> menit dan tidak berhenti saat layar terkunci.</li>
+    </ul>
+    <p id="loginErr" class="err" role="alert"></p>
+    <button class="btn" type="submit">Mulai ujian</button>
+  </form>
+</main>
+
+<section id="screenExam" hidden>
+  <header class="bar">
+    <strong id="barTitle"></strong>
+    <span id="barUser" class="muted"></span>
+    <span class="spacer"></span>
+    <span id="vCount" class="pill">Pelanggaran 0</span>
+    <span id="timer" class="pill timer">00:00:00</span>
+    <button id="btnFinish" class="btn small">Selesaikan</button>
+  </header>
+  <div id="frameWrap"></div>
+  <div id="watermark" aria-hidden="true"></div>
+  <div id="overlay" class="center" hidden>
+    <div class="card">
+      <h2 id="ovTitle"></h2>
+      <p id="ovMsg"></p>
+      <div id="pinBox" hidden>
+        <input id="pinIn" type="password" placeholder="PIN pengawas">
+        <p id="pinErr" class="err"></p>
+      </div>
+      <button id="ovBtn" class="btn"></button>
+    </div>
+  </div>
+</section>
+
+<main id="screenDone" class="center" hidden>
+  <div class="card">
+    <h2>Ujian selesai</h2>
+    <p id="doneMsg"></p>
+    <p class="muted">Jawaban Anda sudah tersimpan di Google Form. Anda boleh menutup halaman ini.</p>
+  </div>
+</main>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
